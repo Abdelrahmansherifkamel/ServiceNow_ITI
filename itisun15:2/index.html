@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="taskList">
+      <input type="text" id="taskInput" placeholder="Enter a task" />
+      <button id="btn">add task</button>
+      counter: <span id="counter">0</span>
+      <button id="removeBtn">remove last task</button>
+    </div>
+    <div id="form">
+      <form>
+        <input type="text" placeholder="Enter your name" />
+        <input type="email" placeholder="Enter your email" />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
+<script>
+  /*document.addEventListener("DOMContentLoaded", function () {
+    const button = document.getElementById("btn");
+    button.addEventListener("click", function () {
+      const taskInput = document.getElementById("taskInput");
+      const task = taskInput.value.trim();
+      if (task) {
+        alert("Task added: " + task);
+        const taskList = document.getElementById("taskList");
+        const taskItem = document.createElement("div");
+        taskItem.textContent = task;
+        taskList.appendChild(taskItem);
+        const counter = document.getElementById("counter");
+        counter.textContent = parseInt(counter.textContent) + 1;
+      } else {
+        alert("No task entered.");
+      }
+    });
+
+    const removeBtn = document.getElementById("removeBtn");
+    removeBtn.addEventListener("click", function () {
+      const taskList = document.getElementById("taskList");
+      const tasks = taskList.getElementsByTagName("div");
+      if (tasks.length > 0) {
+        taskList.removeChild(tasks[tasks.length - 1]);
+        const counter = document.getElementById("counter");
+        counter.textContent = parseInt(counter.textContent) - 1;
+      }
+    });
+    const submit = document.getElementById("submit");
+    submit.addEventListener("submit", function (event) {
+      let name = document.getElementById("name").value;
+      let email = document.getElementById("email").value;
+      if (name === "") {
+        alert("Name is required");
+        event.preventDefault();
+      }
+
+      if (!email.includes("@")) {
+        alert("Invalid email");
+        event.preventDefault();
+      }
+
+      if (name !== "" && email.includes("@")) {
+        alert("Form submitted successfully!");
+      }
+    });
+  });
+  //task 2 try catch finally
+  try{
+    alert("Form submitted successfully!");
+  if (confirm("Do you want to submit the form?"))bad_code();
+  }catch(err){
+    alert('catch');}
+  finally{
+    alert('finally'); 
+  }
+// task 3 try catch finally
+  function divide(a, b) {
+    try {
+      if (b === 0) {
+        throw new Error("Cannot divide by zero");
+      }
+      const result = a / b;
+      console.log("Result: ", result);
+    } catch (error) {
+      console.error("An error occurred: ", error.message);
+    } finally {
+      console.log("Finally block executed");
+    }
+  }
+  divide(10, 0);
+  divide(10, 2);
+// task 4 try catch finally password validation
+  function check_password(password) {
+    try {
+      if (password.length < 8) {
+        throw new Error("Password must be at least 8 characters long");
+      }
+      if (!/[A-Z]/.test(password)) {
+        throw new Error("Password must contain at least one uppercase letter");
+      }
+      if (!/[a-z]/.test(password)) {
+        throw new Error("Password must contain at least one lowercase letter");
+      }
+      if (!/[0-9]/.test(password)) {
+        throw new Error("Password must contain at least one digit");
+      }
+      alert("Password is valid!");
+      console.log("Password is valid!");
+    } catch (error) {
+      alert("Error: " + error.message);
+      console.error("Error: " + error.message);
+    }
+    finally {
+      console.log("Finally block executed");
+    }
+  }
+  check_password("weak");
+  check_password("StrongPass1");*/
+  //task 5 closure
+  function secretMessage() {
+    let message = prompt("Enter the secret message:");
+
+    return {
+      updateMessage(newMessage) {
+        message = newMessage;
+        alert("Message updated to: " + message);
+        console.log("The updated message is: " + message);
+      },
+
+      readMessage() {
+        console.log("The readable message is: " + message);
+      },
+    };
+  }
+  const secret = secretMessage();
+  secret.updateMessage("This is a secret message!");
+  secret.readMessage();
+
+</script>
