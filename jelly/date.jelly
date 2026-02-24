@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim = "false" xmlns:j="jelly:core">
+<!-- <j:new className="java.util.Date" var="currentDate"/>
+<p>Current Date and Time: ${currentDate}</p>
+<j:invoke on="${currentDate}" method="getTime" var="currentTime"/>
+<p>Current Time in Milliseconds: ${currentTime}</p>
+<j:new className="java.text.SimpleDateFormat" var="dateFormatter">
+<j:arg value=" yyyy-MM-dd HH:mm:ss"/>
+</j:new>
+<j:invoke on ="${dateFormatter}" method="format" var="formattedDate">
+<j:arg value="${currentDate}"/>
+</j:invoke>
+<p>Formatted Date and Time: ${formattedDate}</p>
+<j:new className="java.text.SimpleDateFormat" var="dateFormattime">
+<j:arg value="HH:mm:ss"/>
+</j:new>
+<j:invoke on ="${dateFormattime}" method="format" var="formattedDate">
+<j:arg value="${currentDate}"/>
+</j:invoke>
+<p>Formatted Time: ${formattedDate}</p>
+
+ -->
+
+<!--task1 -->
+<j:new var="sdf" className="java.text.SimpleDateFormat">
+    <j:arg value="yyyy-MM-dd HH:mm:ss"/>
+</j:new>
+
+    <j:invoke on="${sdf}" method="parse" var="customDate">
+        <j:arg value="2025-12-25 15:30:00"/>
+    </j:invoke>
+customDate: ${customDate}
+<j:invoke on ="${sdf}" method="format" var="formattedDatec">
+<j:arg value="${customDate}"/>
+</j:invoke>
+<p>Formatted Time: ${formattedDatec}</p>
+
+
+
+<j:getStatic var ="pi" className="java.lang.Math" field="PI"/>
+<j:getStatic var ="e" className="java.lang.Math" field="E"/>
+<p>Value of PI: ${pi}</p>
+<p>Value of E: ${e}</p>
+<j:invokeStatic var = "maxValue" className="java.lang.Math" method="max">
+    <j:arg value="10" type="int"/>
+    <j:arg value="20" type="int"/>
+</j:invokeStatic>
+<p>Maximum of 10 and 20: ${maxValue}</p>
+<j:invokeStatic var ="roundValue" className="java.lang.Math" method="round">
+    <j:arg value="3.7" type="float"/>
+</j:invokeStatic>
+<p>Rounded value of 3.7: ${roundValue}</p>
+
+<j:new var="random" className="java.util.Random"/>
+<j:invoke on="${random}" method="nextInt" var="randomInt">
+<j:arg value="100" type="int"/>
+</j:invoke>
+<p>Random Integer between 0 and 99: ${randomInt}</p>
+</j:jelly>

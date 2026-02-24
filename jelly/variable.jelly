@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim = "false" xmlns:j="jelly:core">
+<j:set var = "jvar_age" value = "16" >
+</j:set>
+<j:if test = "${jvar_age lt 18}">
+    <p>You are a minor.</p>
+</j:if>
+<j:set var = "jvar_name" value = "John Do" >
+</j:set>
+<j:choose>
+<j:when test = "${jvar_name eq 'John Doe'}">
+    <p>Hello, John Doe!</p>
+</j:when>
+<j:otherwise>
+    <p>Hello, ${jvar_name}!</p>
+</j:otherwise>
+</j:choose>
+
+<j:set var = "jvar_name" value = "ahmed,mohamed,kimo,cono" >
+</j:set>
+<j:forEach var = "name" items = "${jvar_name.split(',')}">
+    <p>Hello, ${name}!</p>
+</j:forEach>
+
+<j:set var="colors" value="pink,green,violet,indigo,blue,yellow,orange,white,red"/>
+<j:forEach var="jvar_colors" items="${colors.split(',')}">
+<p>Color: &#160; <span style="color:${jvar_colors}">${jvar_colors}</span></p>
+</j:forEach>
+<j:forEach var="jvar_index" begin="0" end="20" step="2">
+${jvar_index}
+</j:forEach>
+
+
+
+</j:jelly>

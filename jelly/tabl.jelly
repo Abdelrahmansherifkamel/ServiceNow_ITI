@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core">
+
+<h2>Task 1: Create Table from List</h2>
+
+<j:new className="java.util.ArrayList" var="names"/>
+<j:invoke on="${names}" method="add">
+    <j:arg value="John"/>
+</j:invoke>
+<j:invoke on="${names}" method="add">
+    <j:arg value="Jane"/>
+</j:invoke>
+<j:invoke on="${names}" method="add">
+    <j:arg value="Omar"/>
+</j:invoke>
+
+<html>
+<head>
+<style>
+table {
+    width: 50%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+th {
+    background-color: lightgray;
+}
+</style>
+</head>
+<body>
+
+<table>
+
+    <tr>
+        <th>Name</th>
+    </tr>
+
+    <j:forEach var="name" items="${names}">
+        <tr>
+            <td>${name}</td>
+        </tr>
+    </j:forEach>
+
+</table>
+
+</body>
+</html>
+
+</j:jelly>
