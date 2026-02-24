@@ -1,0 +1,283 @@
+:root {
+  --green-dark: #1f5a3a;
+  --green-main: #2f6f4e;
+}
+
+.top-bar {
+  background: var(--green-dark);
+}
+
+.site-header {
+  background: var(--green-main);
+}
+
+.site-footer {
+  background: var(--green-main);
+}
+
+.footer-bottom {
+  background: var(--green-dark);
+}
+
+.product-img {
+  height: 220px;
+  object-fit: cover;
+}
+.featured-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.featured-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.featured-card:hover img {
+  transform: scale(1.08);
+}
+
+.large-card {
+  height: 100%;
+  min-height: 500px;
+}
+
+.featured-card:not(.large-card) {
+  min-height: 240px;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.6),
+    rgba(0,0,0,0.2)
+  );
+  color: white;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.overlay h2,
+.overlay h4 {
+  font-weight: 700;
+}
+
+.small-text {
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+.brands-section {
+  background-color: #f7f6f4;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.section-subtitle {
+  color: #555;
+  max-width: 600px;
+  margin: auto;
+}
+
+.brands-container {
+  display: flex;
+  gap: 70px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px 40px;
+}
+
+.brands-container::-webkit-scrollbar {
+  display: none;
+}
+
+.brands-container img {
+  height: 60px;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.brands-container img:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #198754;
+  border: none;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.scroll-btn:hover {
+  background: #145c32;
+}
+
+.left-btn { left: 0; }
+.right-btn { right: 0; }
+.info-tabs-section {
+  background: white;
+}
+
+.info-tabs .nav-link {
+  border: none;
+  font-weight: 500;
+  color: #555;
+  padding: 10px 20px;
+}
+
+.info-tabs .nav-link.active {
+  color: #198754;
+  border-bottom: 3px solid #198754;
+  background: transparent;
+}
+
+.tab-content .lead {
+  max-width: 700px;
+  margin: auto;
+  font-size: 1.1rem;
+}
+.features-section {
+  background-color: #f7f6f4;
+}
+
+.feature-icon {
+  font-size: 2.2rem;
+  color: #198754;
+  transition: 0.3s;
+}
+
+.features-section .col-md-3:hover .feature-icon {
+  transform: scale(1.2);
+}
+
+.features-section h6 {
+  font-weight: 600;
+}
+
+
+
+.offers-section {
+  background-color: #f4f1ee;
+}
+
+.offer-card {
+  position: relative;
+  border-radius: 12px;
+  transition: 0.3s ease;
+}
+
+.offer-card:hover {
+  transform: translateY(-8px);
+}
+
+.discount-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 14px;
+  padding: 6px 10px;
+}
+
+.card-img-top {
+  height: 220px;
+  object-fit: cover;
+}
+
+
+
+.about-hero {
+  background-color: #f4f1ee;
+}
+
+.mission-section {
+  background-color: #ffffff;
+}
+
+.founders-section {
+  background-color: #f4f1ee;
+}
+
+.founder-card {
+  border-radius: 15px;
+  transition: 0.3s;
+}
+
+/* Auth pages (login/register) */
+.auth-wrapper {
+  max-width: 520px;
+}
+
+.auth-card {
+  border-radius: 14px;
+}
+
+.founder-card:hover {
+  transform: translateY(-8px);
+}
+
+.founder-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.story-section {
+  background-color: #f7f6f4;
+  overflow: hidden;
+  position: relative;
+  padding: 100px 0;
+}
+
+.story-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #7fb3d5; /* soft blue like screenshot */
+}
+
+.story-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+}
+
+/* Decorative images */
+
+.decor {
+  position: absolute;
+  max-width: 250px;
+  opacity: 0.9;
+}
+
+.decor-left {
+  left: 0;
+  bottom: 0;
+}
+
+.decor-right {
+  right: 0;
+  top: 50px;
+}
+
+.decor-bottom {
+  right: 0;
+  bottom: 0;
+  max-width: 200px;
+}
