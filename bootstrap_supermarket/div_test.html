@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+</head>
+<body>
+
+<!-- ...existing code... -->
+  <div class="parent">
+    <p>This is the <strong>parent</strong> div (position: relative).</p>
+    <div class="child-absolute">
+      <p>This is the <strong>child</strong> div (position: absolute).</p>
+    </div>
+  </div>
+  
+  <!-- Flexbox Demo Start -->
+  <div class="flex-demo">
+    <div class="flex-item">Item 1</div>
+    <div class="flex-item">Item 2</div>
+    <div class="flex-item">Item 3</div>
+  </div>
+  <!-- Flexbox Demo End -->
+
+  <div class="child-fixed">
+    <p>This is a <strong>fixed</strong> div (position: fixed).</p>
+  </div>
+<!-- ...existing code... -->
+  <style>
+    /* ...existing styles... */
+    .flex-demo {
+      display: flex;
+    
+      flex-direction: column; /* Change to column to see vertical stacking */
+      gap: 10px;
+      margin: 40px 0;
+      background: #f3e5f5;
+      padding: 20px;
+      border: 2px dashed #8e24aa;
+    }
+    .flex-item {
+      background: #ce93d8;
+      padding: 15px 25px;
+      border-radius: 4px;
+      font-weight: bold;
+      
+    }
+  </style>
+<!-- ...existing code... -->
+    </main>
+</body>
+</html>

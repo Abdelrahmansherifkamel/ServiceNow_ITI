@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>shop page</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <style>
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+      }
+
+      main {
+        flex: 1 0 auto; /* Fill remaining space */
+        margin-top: 70px; /* Space for fixed-top navbar */
+      }
+
+      .masthead {
+        height: 100vh; /* Full viewport height */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: center; /* vertical center */
+        text-align: center;
+        position: relative;
+        flex-wrap: nowrap;
+      }
+
+      .masthead::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(11, 0, 0, 0.4); /* Optional dark overlay */
+        z-index: 1;
+      }
+
+      .masthead .container {
+        position: relative;
+        z-index: 2;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top">
+      <div class="container">
+        <!-- Brand -->
+        <a class="navbar-brand d-flex align-items-center" href="/index.html">
+          <img
+            src="/public/3731110.png"
+            alt="Logo"
+            width="40"
+            height="40"
+            class="me-2 rounded-circle"
+          />
+          Fresh Shop
+        </a>
+
+        <!-- Toggler -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          Menu
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/index.html">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/shop.html">Shop</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/gallery.html">Gallery</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/offers.html">Offers</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-12 text-center">
+              <h1 class="text-uppercase fw-bold text-dark">
+                fresh fruits and vegetables
+              </h1>
+            </div>
+          </div>
+
+          <!-- cards section -->
+
+          <div class="row justify-content-center">
+            <div class="col-lg-3 col-md-3 col-sm-12 text-center">
+              <div class="card">
+                <i class="fa-solid fa-lemon card-icon"></i>
+                <div class="card-body">
+                  <h5 class="card-title">Fresh Lemon</h5>
+                  <p class="card-text">0.59$ per lemon</p>
+                  <a href="#" class="btn btn-primary">add to cart</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 text-center">
+              <div class="card">
+                <i class="fa-solid fa-circle card-icon"></i>
+                <div class="card-body">
+                  <h5 class="card-title">tomato</h5>
+                  <p class="card-text">1.49$ per lb</p>
+                  <a href="#" class="btn btn-primary">add to cart</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 text-center">
+              <div class="card">
+                <i class="fa-solid fa-carrot card-icon"></i>
+                <div class="card-body">
+                  <h5 class="card-title">carrot</h5>
+                  <p class="card-text">1.25/bag</p>
+                  <a href="#" class="btn btn-primary">add to cart</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 text-center">
+              <div class="card">
+                <i class="fa-solid fa-apple-whole card-icon"></i>
+                <div class="card-body">
+                  <h5 class="card-title">apple</h5>
+                  <p class="card-text">0.59$/lb</p>
+                  <a href="#" class="btn btn-primary">add to cart</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer-->
+    <footer class="footer py-4 bg-success text-white mt-auto">
+      <div class="container text-center">Copyright &copy; Fresh Shops 2026</div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
