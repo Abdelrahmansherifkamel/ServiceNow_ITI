@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+ <j:set var="jvar_age" value="16">
+ </j:set>
+
+ <j:if test="${jvar_age lt 18}">
+  <p>Sorry, You are not eligible for driving licence. As we got your age is ${jvar_age}.</p>
+ </j:if>
+ 
+ <j:if test="${jvar_age ge 18}">
+  <p>Hey, You are eligible for driving licence. As we got your age is ${jvar_age}.</p>
+ </j:if>
+</j:jelly>

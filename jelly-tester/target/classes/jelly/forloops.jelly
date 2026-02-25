@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core">
+
+    <!-- Standard Jelly uses <j:set> to define variables. 
+         We split a string to create an iterable array. -->
+    <j:set var="colors" value="pink,green,violet,indigo,blue,yellow,orange,white,red"/>
+
+    <j:forEach var="jvar_colors" items="${colors.split(',')}">
+        
+        <p>Color: &#160; <span style="color:${jvar_colors}">${jvar_colors}</span></p>
+    </j:forEach>
+
+    <j:forEach var="jvar_index" begin="0" end="20" step="2">
+        ${jvar_index}
+    </j:forEach>
+
+</j:jelly>

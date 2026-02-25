@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core">
+<!--task1 create hashmap-->
+<j:new className="java.util.ArrayList" var="people"/>
+<j:new className="java.util.HashMap" var="user"/>
+<!-- add key value pairs to hashmap -->
+<j:invoke on="${user}" method="put">
+  <j:arg value ="name"></j:arg>
+  <j:arg value ="John Doe"></j:arg>
+</j:invoke>
+<j:invoke on="${user}" method="put">
+  <j:arg value ="age"></j:arg>
+  <j:arg value ="30"></j:arg>
+</j:invoke>
+<j:invoke on="${user}" method="put">
+  <j:arg value ="city"></j:arg>
+  <j:arg value ="New York"></j:arg>
+</j:invoke>
+<j:invoke on="${people}" method="add">
+    <j:arg value="${user}"/>
+</j:invoke>
+
+
+<j:new className="java.util.HashMap" var="user2"/>
+<j:invoke on="${user2}" method="put">
+  <j:arg value ="name"></j:arg>
+  <j:arg value ="Jane Smith"></j:arg>
+  </j:invoke>
+<j:invoke on="${user2}" method="put">
+  <j:arg value ="age"></j:arg>
+  <j:arg value ="35"></j:arg>
+</j:invoke>
+<j:invoke on="${user2}" method="put">
+  <j:arg value ="city"></j:arg>
+  <j:arg value ="Los Angeles"></j:arg>
+</j:invoke>
+<j:invoke on="${people}" method="add">
+    <j:arg value="${user2}"/>
+</j:invoke>
+
+<j:forEach var="person" items="${people}">
+  <p>Person:</p>
+  <j:invoke on="${person}" method="get" var="personName">
+    <j:arg value ="name"></j:arg>
+  </j:invoke>
+  <j:invoke on="${person}" method="get" var="personAge">
+    <j:arg value ="age"></j:arg>
+  </j:invoke>
+  <j:invoke on="${person}" method="get" var="personCity">
+    <j:arg value ="city"></j:arg>
+  </j:invoke>
+  <p>Name: ${personName}</p>
+  <p>Age: ${personAge}</p>
+  <p>City: ${personCity}</p>
+</j:forEach>
+
+</j:jelly>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<j:jelly xmlns:j="jelly:core">
+
+  <!-- Create StringBuilder -->
+  <j:new className="java.lang.StringBuilder" var="builder"/>
+  
+  <!-- Append strings -->
+  <j:invoke on="${builder}" method="append">
+    <j:arg value="Hello"/>
+  </j:invoke>
+  <j:invoke on="${builder}" method="append">
+    <j:arg value=" "/>
+  </j:invoke>
+  <j:invoke on="${builder}" method="append">
+    <j:arg value="World"/>
+  </j:invoke>
+  ${builder}
+  <!-- Get final string -->
+  <j:invoke on="${builder}" method="toString" var="message"/>
+  Message: <j:out value="${message}"/><br/>
+  
+  <!-- Get length -->
+  <j:invoke on="${builder}" method="length" var="length"/>
+  Length: <j:out value="${length}"/><br/>
+  
+  <!-- Reverse -->
+  <j:invoke on="${builder}" method="reverse"/>
+  Reversed:
+  <j:out value="${builder.toString()}"/>
+  <j:out value="${builder.length()}"/>
+
+</j:jelly>

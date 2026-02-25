@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<j:jelly xmlns:j="jelly:core">
+
+  <!-- Create Random object -->
+  <j:new className="java.util.Random" var="random"/>
+
+  <!-- Generate random integer between 0 and 99 -->
+  <j:set var="number" value="${random.nextInt(100)}"/>
+
+  Random Number:
+  ${number}
+
+</j:jelly>

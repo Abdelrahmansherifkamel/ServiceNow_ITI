@@ -1,0 +1,22 @@
+
+ <g:evaluate> 
+  var gr = new GlideRecord("problem");
+  gr.addQuery('active', 'true');
+  gr.query();
+  gr;
+ </g:evaluate>
+
+ <table border="1">
+  <tr><td colspan="2">Active Problems</td></tr>
+  <tr>
+   <th>Number</th>
+   <th>Short Description</th>
+  </tr>
+ 
+ </table>
+
+ <style>
+  td, th{
+   padding: 10px;
+  }
+ </style>

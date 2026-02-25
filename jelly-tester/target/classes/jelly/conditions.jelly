@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+ <j:set var="jvar_name" value="sandy">
+ </j:set>
+
+ <j:choose>
+  <j:when test="${jvar_name eq 'Richa'}">
+   <p>Welcome, Richa!</p>
+  </j:when>
+  <j:when test="${jvar_name eq 'Atul'}">
+   <p>Welcome, Atul!</p>
+  </j:when>
+  <j:otherwise>
+   <p>Welcome, ${jvar_name}!</p>
+  </j:otherwise>
+ </j:choose>
+</j:jelly>
