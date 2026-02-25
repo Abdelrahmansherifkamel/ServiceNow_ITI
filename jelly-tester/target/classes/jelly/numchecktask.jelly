@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly xmlns:j="jelly:core">
+
+<html>
+<head>
+<style>
+.number-box {
+  width: 150px;
+  height: 100px;
+  border: 2px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: bold;
+  margin: 20px auto;
+}
+</style>
+</head>
+<body>
+
+<div class="number-box">
+<j:new className="com.example.oddOReven" var="oddOrEvenChecker"/>
+
+<p>the number 5 is :${oddOrEvenChecker.check(5)}</p>
+</div>
+
+</body>
+</html>
+
+</j:jelly>

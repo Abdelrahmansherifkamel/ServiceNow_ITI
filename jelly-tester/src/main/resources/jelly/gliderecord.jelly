@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" >
+ <g:evaluate> 
+  var gr = new GlideRecord("problem");
+  gr.addQuery('active', 'true');
+  gr.query();
+  gr;
+ </g:evaluate>
+
+ <table border="1">
+  <tr><td colspan="2">Active Problems</td></tr>
+  <tr>
+   <th>Number</th>
+   <th>Short Description</th>
+  </tr>
+ <j:while test="$[gr.next()]">
+  <tr>
+  <td>$[gr.number]</td>
+  <td>$[gr.short_description]</td>
+  </tr>
+ </j:while>
+ </table>
+
+ <style>
+  td, th{
+   padding: 10px;
+  }
+ </style>
+</j:jelly>

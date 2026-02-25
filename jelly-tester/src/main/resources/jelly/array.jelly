@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly xmlns:j="jelly:core" xmlns:g="glide">
+        <!-- In servicenow -->
+    <g:evaluate>
+        var words = ["Welcome", "To", "Jello", "World"];
+    </g:evaluate>
+    <j:forEach var="jvar_msg" items="${words}">
+        <p>${jvar_msg}</p>
+    </j:forEach>
+
+   
+</j:jelly>

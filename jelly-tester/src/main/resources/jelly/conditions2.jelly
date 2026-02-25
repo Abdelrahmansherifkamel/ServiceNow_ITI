@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+ <j:set var="jvar_name" value="Aakash">
+ </j:set>
+
+ <j:switch on="${jvar_name}">
+  <j:case value="Richa">
+   <p>Welcome, Richa!</p>
+  </j:case>
+  <j:case value="Atul">
+   <p>Welcome, Atul!</p>
+  </j:case>
+  <j:default>
+   <p>Welcome, ${jvar_name}!</p>
+  </j:default>
+ </j:switch>
+</j:jelly>

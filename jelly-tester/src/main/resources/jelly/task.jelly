@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<j:jelly xmlns:j="jelly:core">
+
+  <j:new className="java.text.SimpleDateFormat" var="dateTimeFormatter">
+    <j:arg value="yyyy-MM-dd HH:mm:ss"/>
+  </j:new>
+
+  <j:invoke on="${dateTimeFormatter}" method="parse" var="customDate">
+    <j:arg value="2024-01-01 15:30:00"/>
+  </j:invoke>
+
+ <j:invoke on="${dateTimeFormatter}" method="format" var="formattedTime">
+    <j:arg value="${customDate}"/>
+  </j:invoke>
+
+Formatted DateTime: ${formattedTime}
+</j:jelly>

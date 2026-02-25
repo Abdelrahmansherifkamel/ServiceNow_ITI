@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<j:jelly xmlns:j="jelly:core" trim="false">
+
+<j:new className="java.util.ArrayList" 
+var="names"/>
+
+<j:invoke on="${names}" method="add">
+  <j:arg value="Alice"/>
+</j:invoke>
+<j:invoke on="${names}" method="add">
+  <j:arg value="Bob"/>
+</j:invoke>
+<j:invoke on="${names}" method="add">
+  <j:arg value="Charlie"/>
+</j:invoke>
+<j:invoke on="${names}" method="add">
+  <j:arg value="Diana"/>
+</j:invoke>
+
+
+
+</j:jelly>

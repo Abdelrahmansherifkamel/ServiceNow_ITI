@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly xmlns:j="jelly:core">
+  <html>
+    <body>
+      <h1>Hello World from Jelly!</h1>
+      <p>This page was generated locally.</p>
+    </body>
+  </html>
+</j:jelly>

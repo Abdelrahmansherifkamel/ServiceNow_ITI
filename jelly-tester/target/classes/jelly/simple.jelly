@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly xmlns:j="jelly:core">
+<j:new className="com.example.SimpleFunctions" var="greet"/>
+${greet.hello("boody")}
+</j:jelly>

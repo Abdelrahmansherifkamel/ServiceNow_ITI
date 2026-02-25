@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<j:jelly xmlns:j="jelly:core">
+  <j:new className="java.util.Date" var="now"/>
+  Current date/time: ${now}<br/>
+  <j:new className="java.text.SimpleDateFormat" var="formatter">
+    <j:arg value="yyyy-MM-dd HH:mm:ss"/>
+  </j:new>
+  <j:invoke on="${formatter}" method="format" var="formattedDate">
+    <j:arg value="${now}"/>
+  </j:invoke>
+  Formatted date: ${formattedDate}
+
+
+  <j:new className="java.text.SimpleDateFormat" var="formatterTime">
+    <j:arg value="HH:mm"/>
+  </j:new>
+  <j:invoke on="${formatterTime}" method="format" var="formattedTime">
+    <j:arg value="${now}"/>
+  </j:invoke>
+  Formatted time: ${formattedTime}
+</j:jelly>
