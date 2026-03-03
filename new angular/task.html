@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Todo List</title>
+
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <style>
+      body {
+        background: #f4f6f9;
+        padding: 40px;
+      }
+
+      .completed {
+        text-decoration: line-through;
+        color: gray;
+      }
+    </style>
+  </head>
+
+  <body>
+  
+    <div ng-app="myApp" ng-controller="mainCtrl" class="container">
+
+      <h2 class="text-center mb-4">Todo List</h2>
+      <p class="text-muted text-center">
+        Total Tasks: {{tasks.length}}
+      </p>
+      <todo-list tasks="tasks"></todo-list>
+
+    </div>
+
+    <script>
+      var app = angular.module("myApp", []);
+
+      app.controller("mainCtrl", function ($scope) {
+        $scope.tasks = [
+          { text: "Learn AngularJS", completed: false },
+          { text: "Build a project", completed: false }
+        ];
+      });
+      app.directive("todoList", function () {
+        return {
+          scope: {
+            tasks: "="   
+          },
+          template: `
+            <div class="card p-4 shadow-sm">
+
+              <!-- Add Task -->
+              <div class="input-group mb-3">
+                <input type="text"
+                       class="form-control"
+                       placeholder="Add new task"
+                       ng-model="newTask">
+
+                <button class="btn btn-primary"
+                        ng-click="addTask()">
+                  Add
+                </button>
+              </div>
+
+              <!-- Task List -->
+              <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center"
+                    ng-repeat="task in tasks">
+
+                  <div class="form-check">
+                    <input class="form-check-input"
+                           type="checkbox"
+                           ng-model="task.completed">
+
+                    <label class="form-check-label"
+                           ng-class="{'completed': task.completed}">
+                      {{task.text}}
+                    </label>
+                  </div>
+
+                  <button class="btn btn-sm btn-danger"
+                          ng-click="deleteTask($index)">
+                    Delete
+                  </button>
+
+                </li>
+              </ul>
+
+            </div>
+          `,
+          link: function (scope) {
+            scope.addTask = function () {
+              if (!scope.newTask) return;
+
+              scope.tasks.push({
+                text: scope.newTask,
+                completed: false
+              });
+
+              scope.newTask = "";
+            };
+            scope.deleteTask = function (index) {
+              scope.tasks.splice(index, 1);
+            };
+
+          }
+        };
+      });
+    </script>
+  </body>
+</html>
