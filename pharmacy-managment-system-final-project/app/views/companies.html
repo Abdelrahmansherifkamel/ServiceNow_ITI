@@ -1,0 +1,127 @@
+<div class="container mt-4 pb-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h3 class="fw-bold text-dark mb-0">Company Management</h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="#!/dashboard" class="text-success text-decoration-none">Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Companies</li>
+                </ol>
+            </nav>
+        </div>
+        <a href="#!/dashboard" class="btn btn-outline-secondary btn-sm shadow-sm rounded-pill px-3">
+            <i class="bi bi-arrow-left me-1"></i> Back to Dashboard
+        </a>
+    </div>
+
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header bg-white py-3 border-0">
+            <h5 class="mb-0 fw-bold" ng-class="isEditing ? 'text-primary' : 'text-success'">
+                <i class="bi me-2" ng-class="isEditing ? 'bi-pencil-square' : 'bi-plus-circle'"></i>
+                {{ isEditing ? 'Edit Company Profile' : 'Register New Manufacturer' }}
+            </h5>
+        </div>
+        <div class="card-body p-4">
+            <form ng-submit="saveCompany()" class="row g-3">
+                <div class="col-md-6">
+                    <label class="form-label small fw-bold text-muted text-uppercase">Company Name</label>
+                    <input type="text" class="form-control" placeholder="e.g. Pfizer" 
+                           ng-model="newCompany.name" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label small fw-bold text-muted text-uppercase">Contact Email</label>
+                    <input type="email" class="form-control" placeholder="contact@company.com" 
+                           ng-model="newCompany.email">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label small fw-bold text-muted text-uppercase">Country</label>
+                    <input type="text" class="form-control" placeholder="e.g. USA" 
+                           ng-model="newCompany.country">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label small fw-bold text-muted text-uppercase">Phone Number</label>
+                    <input type="text" class="form-control" placeholder="+123 456..." 
+                           ng-model="newCompany.phone">
+                </div>
+
+                <div class="col-12 text-end pt-3">
+                    <button type="button" class="btn btn-light px-4 me-2 border shadow-sm" 
+                            ng-if="isEditing" ng-click="resetForm()">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn px-4 py-2 fw-bold text-white shadow-sm" 
+                            ng-class="isEditing ? 'btn-primary' : 'btn-success'">
+                        <i class="bi me-2" ng-class="isEditing ? 'bi-check-lg' : 'bi-save'"></i>
+                        {{ isEditing ? 'Update Profile' : 'Register Company' }}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="card border-0 shadow-sm">
+        <div class="card-header bg-white py-3 border-0 d-flex justify-content-between align-items-center">
+            <h5 class="mb-0 fw-bold text-dark">Company Directory</h5>
+            <div class="input-group input-group-sm w-25">
+                <span class="input-group-text bg-light border-0"><i class="bi bi-search"></i></span>
+                <input type="text" class="form-control bg-light border-0" 
+                       placeholder="Search companies..." ng-model="searchQuery">
+            </div>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0 text-center">
+                    <thead class="bg-light text-secondary">
+                        <tr>
+                            <th class="text-start ps-4">Manufacturer</th>
+                            <th>Country</th>
+                            <th>Contact Email</th>
+                            <th>Phone Number</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="c in companies | filter:searchQuery">
+                            <td class="text-start ps-4">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-success bg-opacity-10 p-2 rounded me-3 text-success">
+                                        <i class="bi bi-building-fill fs-5"></i>
+                                    </div>
+                                    <span class="fw-bold text-dark">{{c.name}}</span>
+                                </div>
+                            </td>
+                            <td><span class="text-muted">{{c.country || '--'}}</span></td>
+                            <td class="small">{{c.email || '--'}}</td>
+                            <td class="text-muted small font-monospace">{{c.phone || '--'}}</td>
+                            <td>
+                                <span class="badge bg-success bg-opacity-10 text-success px-3 rounded-pill">
+                                    Active
+                                </span>
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <button class="btn btn-sm btn-outline-primary border-0" 
+                                            ng-click="editCompany(c)" title="Edit Profile">
+                                        <i class="bi bi-pencil-fill"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger border-0" 
+                                            ng-click="deleteCompany(c.id)" title="Delete Company">
+                                        <i class="bi bi-trash3-fill"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr ng-if="(companies | filter:searchQuery).length === 0">
+                            <td colspan="6" class="py-5 text-center text-muted">
+                                <i class="bi bi-building-exclamation fs-1 d-block mb-2"></i>
+                                No companies found.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

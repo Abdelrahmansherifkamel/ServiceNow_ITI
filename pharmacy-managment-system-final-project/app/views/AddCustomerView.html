@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Customer</title>
+    <style>
+        body {
+            background-color: #f4f7f6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .form-container {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #555;
+            text-align: right;
+        }
+
+        .btn-save {
+            background-color: #28a745;
+            border: none;
+            padding: 10px 30px;
+        }
+
+        .btn-save:hover {
+            background-color: #218838;
+        }
+
+        @media (min-width: 768px) {
+            .label-align {
+                text-align: right;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3 class="text-secondary">Add New Record</h3>
+            <button class="btn btn-outline-primary btn-sm">View All Records</button>
+        </div>
+
+        <div class="form-container p-5">
+            <form>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="row mb-3 align-items-center">
+                            <label for="fullName" class="col-sm-4 form-label label-align">Full Name :</label>
+                            <div class="col-sm-8">
+                                <input type="text" id="fullName" class="form-control" placeholder="Enter full name"
+                                    ng-model="NewCustomer.name" required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3 align-items-center">
+                            <label for="phone" class="col-sm-4 form-label label-align">Phone :</label>
+                            <div class="col-sm-8">
+                                <input type="tel" id="phone" class="form-control" placeholder="e.g. +1 234 567 890"
+                                    ng-model="NewCustomer.phone">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="row mb-3">
+                            <label for="address" class="col-sm-4 form-label label-align">Address :</label>
+                            <div class="col-sm-8">
+                                <textarea id="address" class="form-control" rows="1" placeholder="Street, City, Zip"
+                                    ng-model="NewCustomer.address"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="illness" class="col-sm-4 form-label label-align">Medical Illness :</label>
+                            <div class="col-sm-8">
+                                <textarea id="illness" class="form-control" rows="1" placeholder="Specify any conditions"
+                                    ng-model="NewCustomer.medical_illness"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="my-4 text-muted">
+                <div class="d-flex justify-content-end gap-2">
+                    <button type="button" class="btn btn-light border" ng-click="ClearInputFields()">Clear</button>
+                    <button type="button" class="btn btn-save text-white fw-bold" ng-click="AddNewCustomer()">Save
+                        Record</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
