@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Student Management</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container mt-5" ng-app="studentApp" ng-controller="studentCtrl">
+      <h2 class="mb-3">Student Management</h2>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <input
+            type="text"
+            class="form-control"
+            ng-model="searchText"
+            placeholder="Search by name"
+          />
+        </div>
+
+        <div class="col-md-6">
+          <select class="form-select" ng-model="sortOrder">
+            <option value="marks">Sort by Marks (Low to High)</option>
+            <option value="-marks">Sort by Marks (High to Low)</option>
+          </select>
+        </div>
+      </div>
+
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          ng-repeat="student in students | filter:searchText | orderBy:sortOrder"
+          ng-class="{'text-success fw-bold': student.marks > 80}"
+        >
+          {{student.name}} - {{student.marks}}
+        </li>
+      </ul>
+
+      <p
+        class="text-danger mt-3"
+        ng-if="(students | filter:searchText).length == 0"
+      >
+        No student found
+      </p>
+    </div>
+
+    <script>
+      angular
+        .module("studentApp", [])
+        .controller("studentCtrl", function ($scope) {
+          $scope.students = [
+            { name: "Ali", marks: 85 },
+            { name: "Sara", marks: 72 },
+            { name: "John", marks: 90 },
+            { name: "Mona", marks: 60 },
+            { name: "Sara", marks: 88 },
+            { name: "Mike", marks: 92 },
+            { name: "Emma", marks: 65 },
+            { name: "David", marks: 80 },
+            { name: "Sophia", marks: 78 },
+            { name: "Chris", marks: 82 }
+          ];
+
+          $scope.sortOrder = "marks";
+        });
+    </script>
+  </body>
+</html>

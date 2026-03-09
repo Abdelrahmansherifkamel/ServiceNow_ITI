@@ -1,0 +1,279 @@
+<!doctype html>
+<html>
+  <head>
+    <title>AngularJS Product task</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+    />
+
+    <style>
+      body {
+        background: #f5f5f5;
+      }
+      .panel {
+        margin-top: 30px;
+      }
+      .glyphicon-spin {
+        animation: spin 1s infinite linear;
+      }
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div ng-app="myApp" ng-controller="ProductController">
+      <div class="container">
+        <h2 class="text-center">Products Management</h2>
+
+        <!-- FORM PANEL -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <strong>{{ isEdit ? 'Edit Product' : 'Add New Product' }}</strong>
+          </div>
+
+          <div class="panel-body">
+            <form
+              name="productForm"
+              ng-submit="productForm.$valid && (isEdit ? updateProduct() : addProduct())"
+              novalidate
+            >
+              <div class="row">
+                <div
+                  class="col-md-4 form-group"
+                  ng-class="{'has-error': productForm.title.$touched && productForm.title.$invalid}"
+                >
+                  <label>Title</label>
+                  <input
+                    type="text"
+                    name="title"
+                    class="form-control"
+                    ng-model="newProduct.title"
+                    required
+                    minlength="3"
+                  />
+
+                  <small
+                    class="help-block"
+                    ng-if="productForm.title.$touched && productForm.title.$error.required"
+                  >
+                    Title is required
+                  </small>
+
+                  <small
+                    class="help-block"
+                    ng-if="productForm.title.$touched && productForm.title.$error.minlength"
+                  >
+                    Minimum 3 characters required
+                  </small>
+                </div>
+
+                <div
+                  class="col-md-4 form-group"
+                  ng-class="{'has-error': productForm.price.$touched && productForm.price.$invalid}"
+                >
+                  <label>Price</label>
+                  <input
+                    type="number"
+                    name="price"
+                    class="form-control"
+                    ng-model="newProduct.price"
+                    required
+                    min="1"
+                  />
+
+                  <small
+                    class="help-block"
+                    ng-if="productForm.price.$touched && productForm.price.$error.required"
+                  >
+                    Price is required
+                  </small>
+
+                  <small
+                    class="help-block"
+                    ng-if="productForm.price.$touched && productForm.price.$error.min"
+                  >
+                    Price must be greater than 0
+                  </small>
+                </div>
+
+                <div class="col-md-4" style="margin-top: 25px">
+                  <button
+                    type="submit"
+                    class="btn btn-success"
+                    ng-disabled="productForm.$invalid"
+                  >
+                    {{ isEdit ? 'Update' : 'Add' }}
+                  </button>
+
+                  <button
+                    type="button"
+                    class="btn btn-default"
+                    ng-if="isEdit"
+                    ng-click="cancelEdit()"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- LOADING -->
+        <div ng-if="loading" class="text-center">
+          <span class="glyphicon glyphicon-refresh glyphicon-spin"></span>
+          Loading products...
+        </div>
+
+        <!-- TABLE PANEL -->
+        <div class="panel panel-info" ng-if="!loading">
+          <div class="panel-heading">
+            <strong>Product List</strong>
+          </div>
+
+          <table class="table table-hover table-striped">
+            <thead>
+              <tr class="info">
+                <th>ID</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th width="150">Actions</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr ng-repeat="product in products">
+                <td>{{ product.id }}</td>
+                <td>{{ product.title }}</td>
+                <td>{{ product.price }}</td>
+                <td>
+                  <button
+                    class="btn btn-warning btn-xs"
+                    ng-click="editProduct(product)"
+                  >
+                    Edit
+                  </button>
+
+                  <button
+                    class="btn btn-danger btn-xs"
+                    ng-click="deleteProduct(product.id)"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+
+              <tr ng-if="products.length === 0">
+                <td colspan="4" class="text-center text-muted">
+                  No products found
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <script>
+      angular
+        .module("myApp", [])
+
+        .service("ProductService", function ($http) {
+          const API_URL =
+            "https://rgwmtfqznikvvrxviiqw.supabase.co/rest/v1/products";
+
+          const config = {
+            headers: {
+              apikey: "sb_publishable_DyFKBwWVxmSEQNQHP2fICw_0c7UYub7",
+              Authorization: "Bearer sb_publishable_DyFKBwWVxmSEQNQHP2fICw_0c7UYub7",
+              "Content-Type": "application/json",
+              Prefer: "return=representation",
+            },
+          };
+
+          this.getProducts = function () {
+            return $http.get(API_URL, config);
+          };
+
+          this.createProduct = function (product) {
+            return $http.post(API_URL, product, config);
+          };
+
+          this.updateProduct = function (product) {
+            return $http.patch(
+              API_URL + "?id=eq." + product.id,
+              product,
+              config,
+            );
+          };
+
+          this.deleteProduct = function (id) {
+            return $http.delete(API_URL + "?id=eq." + id, config);
+          };
+        })
+
+        .controller("ProductController", function ($scope, ProductService) {
+          $scope.products = [];
+          $scope.newProduct = {};
+          $scope.isEdit = false;
+          $scope.loading = false;
+
+          $scope.loadProducts = function () {
+            $scope.loading = true;
+            ProductService.getProducts()
+              .then(function (response) {
+                $scope.products = response.data;
+              })
+              .finally(function () {
+                $scope.loading = false;
+              });
+          };
+
+          $scope.loadProducts();
+
+          $scope.addProduct = function () {
+            ProductService.createProduct($scope.newProduct).then(function () {
+              $scope.loadProducts();
+              $scope.newProduct = {};
+            });
+          };
+
+          $scope.editProduct = function (product) {
+            $scope.isEdit = true;
+            $scope.newProduct = angular.copy(product);
+          };
+
+          $scope.updateProduct = function () {
+            ProductService.updateProduct($scope.newProduct).then(function () {
+              $scope.loadProducts();
+              $scope.newProduct = {};
+              $scope.isEdit = false;
+            });
+          };
+
+          $scope.deleteProduct = function (id) {
+            if (!confirm("Are you sure?")) return;
+            ProductService.deleteProduct(id).then(function () {
+              $scope.loadProducts();
+            });
+          };
+
+          $scope.cancelEdit = function () {
+            $scope.isEdit = false;
+            $scope.newProduct = {};
+          };
+        });
+    </script>
+  </body>
+</html>
